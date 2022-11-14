@@ -95,14 +95,54 @@ class CqnuTool(ttk.Frame):
             )
             LoginFrame_1.pack()
 
-            def DreamRoom(frameRoot):
-                print(type(frameRoot))
-                frameRoot.distroy()
+            def DreamRoom(root, frameRoot):
+                frameRoot.pack_forget()
+                dreamFrame = ttk.Frame(
+                    master=root,
+                )
+                dreamFrame.pack()
+
+                leftFrame = ttk.Frame(
+                    master=dreamFrame,
+                    style="success.TFrame",
+                )
+                leftFrame.pack(side=LEFT)
+
+                ls = ["梦一厅", "梦二厅", "梦三厅"]
+
+                for i in range(3):
+                    cheBtn = ttk.Checkbutton(
+                        master=leftFrame,
+                        text=ls[i]
+                    )
+                    # cheBtn.pack(side=LEFT, pady=15, padx=15)
+                    cheBtn.grid(row=0, column=i, pady=15, padx=30)
+
+                btn = ttk.Button(
+                    master=leftFrame,
+                    text="查询"
+                )
+                btn.grid(row=0, column=3, pady=15, padx=(30, 400))
+                # btn.pack(side=LEFT, padx=15, pady=15)
+
+                rightFrame = ttk.Frame(
+                    master=dreamFrame,
+                )
+                rightFrame.pack(side=RIGHT)
+
+                label = ttk.Label(
+                    master=rightFrame,
+                    text="我是需要显示的信息",
+
+                    wraplength=40
+                )
+                label.pack()
                 pass
 
             btn = ttk.Button(
                 master=LoginFrame_1, text="Login",
-                command=lambda: DreamRoom(self)
+                # command=lambda: DreamRoom(self, LoginFrame)
+                command=DreamRoom(self, LoginFrame)
             )
             btn.pack(pady=15, ipadx=105)
 
