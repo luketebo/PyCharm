@@ -179,17 +179,14 @@ def IP_reverse(L, R):
     return tmpStr
 
 
-def DES(text, key):
+def DES(text, key, flag='0'):
     InitKey = IPChange(text)
     subKeyList = createKey(key)
-
-    print("InitKey: " + InitKey)
-    print(subKeyList)
-
     Ln = InitKey[0:32]
     Rn = InitKey[32:]
 
-    subKeyList = subKeyList[::-1]
+    if ('-1' == flag):
+        subKeyList = subKeyList[::-1]
 
     for subKey in subKeyList:
         while len(Rn) < 32:
@@ -198,8 +195,11 @@ def DES(text, key):
             Ln = "0" + Ln
 
         Rn_expend = E_expend(Rn)
+        # print("Rn_expend: " + Rn_expend)
         S_Input = int(Rn_expend, base=2) ^ int(subKey, base=2)
+        # print('S_Input: ' + str(S_Input))
         subStr = S_sub(S_Input)
+        # print('subStr: ' + subStr)
 
         (Ln, Rn) = P(Ln, subStr, Rn)
 
@@ -209,14 +209,27 @@ def DES(text, key):
 
 
 if __name__ == '__main__':
-    key = '1100110111111000110000101111011110110000101100101100100010101011'
-    plaintext = '1101011011011000110001111110110011001010101001101011010011110011'
-
-    print(bin(ord(plaintext[0])))
-    Chr2Bin(plaintext)
-
+    # key = '1100110111111000110000101111011110110000101100101100100010101011'
+    # plaintext = '1101011011011000110001111110110011001010101001101011010011110011'
+    key = "0001001000110100010101100111100010010001001000110100010101100111"
+    plaintext = "1001100001110110010101000011001000010001010001110010010110000011"
     print('明文：' + plaintext)
 
     ciphertext = DES(plaintext, key)
-
     print('密文: ' + ciphertext)
+
+    decode_ciphertext = DES(ciphertext, key, flag='-1')
+    print('解密: ' + decode_ciphertext)
+
+    # print(plaintext)
+    # print(decode_ciphertext)
+
+    # print('明文: ' + hex(int(plaintext, base=2)).upper())
+    #
+    # ciphertext = DES(plaintext, key)
+    #
+    # print("密文: " + hex(int(ciphertext, base=2)).upper())
+    #
+    # decode_ciphertext = DES(plaintext, key, flag='-1')
+    #
+    # print('解密: ' + hex(int(decode_ciphertext, base=2)).upper())

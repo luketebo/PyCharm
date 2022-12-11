@@ -1,5 +1,6 @@
 # S盒 的置换矩阵
-S_MATRIX = [(14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7,
+S_MATRIX = [
+            (14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7,
              0, 15, 7, 4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8,
              4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0,
              15, 12, 8, 2, 4, 9, 1, 7, 5, 11, 3, 14, 10, 0, 6, 13),
@@ -30,7 +31,8 @@ S_MATRIX = [(14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7,
             (13, 2, 8, 4, 6, 15, 11, 1, 10, 9, 3, 14, 5, 0, 12, 7,
              1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 0, 14, 9, 2,
              7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 13, 15, 3, 5, 8,
-             2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11)]
+             2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11)
+            ]
 # P置换的置换矩阵
 P_MATRIX = [16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18, 31, 10,
             2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25]
@@ -176,14 +178,16 @@ class DES:
             tmpStr += tmp[i - 1]
         return tmpStr
 
-    def main(self):
+    def main(self, flag='0'):
         InitKey = self.IPChange(self.plaintext)
         subKeyList = self.createKey()
 
         Ln = InitKey[0:32]
         Rn = InitKey[32:]
 
-        subKeyList = subKeyList[::-1]
+        if (flag == '-1'):
+            subKeyList = subKeyList[::-1]
+
         for subKey in subKeyList:
             while len(Rn) < 32:
                 Rn = "0" + Rn
@@ -205,7 +209,10 @@ if __name__ == '__main__':
     key = '1100110111111000110000101111011110110000101100101100100010101011'
     plaintext = '1101011011011000110001111110110011001010101001101011010011110011'
 
-    print('明文: ' + plaintext)
-    ciphertext = DES(plaintext, key).main()
+    print('明文：' + plaintext)
 
-    print("密文: " + ciphertext)
+    ciphertext = DES(plaintext, key).main()
+    print('密文: ' + ciphertext)
+
+    decode_ciphertext = DES(ciphertext, key).main(flag='-1')
+    print('解密: ' + decode_ciphertext)

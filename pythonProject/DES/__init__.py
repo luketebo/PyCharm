@@ -127,7 +127,8 @@ def createSubkey(key):
     # 轮函数生成 48位密钥
 
     # 定义轮数
-    Movetimes = [1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1]
+    Movetimes = [2, 1, 2, 2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 1, 1, 2]
+    # Movetimes = [1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1]
     # 定义返回的subKey
     retkey = []
     # 开始轮置换
@@ -221,9 +222,11 @@ def IP_inverse(L16, R16):
 def DES(text, key, flag="0"):
     # 初始字段
     # IP置换
+    print('text: ' + text)
     InitKeyCode = IP(text)
     # 产生子密钥 集合
     subkeylist = createSubkey(key)
+    print('init: ' + InitKeyCode)
     # 获得Ln 和 Rn
     Ln = InitKeyCode[0:32]
     Rn = InitKeyCode[32:]
@@ -239,12 +242,13 @@ def DES(text, key, flag="0"):
 
         # 对右边进行E-扩展
         Rn_expand = E_expend(Rn)
-        print("subKey:" + subkey)
+        # print('Rn_expend: ' + Rn_expand)
         # 压缩后的密钥与扩展分组异或以后得到48位的数据，将这个数据送入S盒
         S_Input = int(Rn_expand, base=2) ^ int(subkey, base=2)
-
+        # print('S_Input: ' + str(S_Input))
         # 进行S盒替代
         S_sub_str = S_sub(S_Input)
+        # print('subStr: ' + S_sub_str)
 
         # P盒置换  并且
         #  左、右半部分交换，接着开始另一轮
@@ -268,19 +272,35 @@ if __name__ == "__main__":
     Mingwen = "1001100001110110010101000011001000010001010001110010010110000011"
 
     # 打印明文的16进制形式
-    print("明文的16进制形式:         " + hex(int(Mingwen, base=2)).upper())
+    # print("明文的16进制形式:         " + hex(int(Mingwen, base=2)).upper())
+
 
     ciphertext = DES(Mingwen, key)
 
     # 打印加密后的密文
-    print("加密后的密文:             " + hex(int(ciphertext, base=2)).upper())
+    # print("加密后的密文:             " + hex(int(ciphertext, base=2)).upper())
 
-    falseKey = "1001001000110100010101100111100010010001001000110100010101100110"
-
+    # falseKey = "1001001000110100010101100111100010010001001000110100010101100110"
+    #
     decode_ciphertext = DES(ciphertext, key, "-1")
-    # 打印解密后的明文  看是否相同
-    print("解密后的明文:             " + hex(int(decode_ciphertext, base=2)).upper())
+    print('明文: ' + Mingwen)
+    print('密文: ' + ciphertext)
+    print('解密: ' + decode_ciphertext)
 
-    decode_ciphertext = DES(ciphertext, falseKey, "-1")
+    # 打印解密后的明文  看是否相同
+    # print("解密后的明文:             " + hex(int(decode_ciphertext, base=2)).upper())
+
+    # decode_ciphertext = DES(ciphertext, falseKey, "-1")
     # 打印给定错误的key 解密后的明文  看是否不同
-    print("给定错误的key 解密后的明文:" + hex(int(decode_ciphertext, base=2)).upper())
+    # print("给定错误的key 解密后的明文:" + hex(int(decode_ciphertext, base=2)).upper())
+
+    # print('明文：' + Mingwen)
+    #
+    # ciphertext = DES(Mingwen, key)
+    #
+    # print('密文: ' + ciphertext)
+    #
+    # decode_ciphertext = DES(Mingwen, key, flag='-1')
+    #
+    # print('解密后: ' + decode_ciphertext)
+
