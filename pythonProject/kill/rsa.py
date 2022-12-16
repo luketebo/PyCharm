@@ -59,9 +59,9 @@ def main():
     print("随机生成两个素数p和q. p=", p, " q=", q)
     n = p * q
     s = (p - 1) * (q - 1)
-    # print("The p is ", p)
-    # print("The q is ", q)
-    # print("The n(p*q) is ",n)
+    print("The p is ", p)
+    print("The q is ", q)
+    print("The n(p*q) is ", n)
     e = co_prime(s)
     print("根据e和(p-1)*(q-1))互质得到: e=", e)
     d = find_d(e, s)

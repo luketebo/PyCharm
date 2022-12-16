@@ -11,6 +11,13 @@
     <option name="namespacePackageFolders">
       <list>
         <option value="$MODULE_DIR$/math/math_2" />
+        <option value="$MODULE_DIR$/Crypt" />
+        <option value="$MODULE_DIR$/DBSCAN" />
+        <option value="$MODULE_DIR$/FinalHomework" />
+        <option value="$MODULE_DIR$/kill" />
+        <option value="$MODULE_DIR$/math" />
+        <option value="$MODULE_DIR$/KMeans" />
+        <option value="$MODULE_DIR$/Regression" />
       </list>
     </option>
   </component>
