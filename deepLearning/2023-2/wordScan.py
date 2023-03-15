@@ -14,7 +14,7 @@ def read():
         for word in _read:
             count[word] = count.get(word, 0) + 1
         items = list(count.items())
-        items.sort(key=lambda x: x[1], reverse=True)cd 
+        items.sort(key=lambda x: x[1], reverse=True)
         for index in range(len(items)):
             word, count = items[index]
             print(f"{word}:{count}")
