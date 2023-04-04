@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/nltk/SkyDragon.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/nltk/SkyDragonSolve.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/text.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-书剑恩仇录.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-侠客行.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-倚天屠龙记.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-天龙八部.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-射雕英雄传.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-白马啸西风.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-碧血剑.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-神雕侠侣.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-笑傲江湖.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-越女剑.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-连城诀.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-雪山飞狐.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-飞狐外传.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-鸳鸯刀.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nltk/zh/金庸-鹿鼎记.txt" charset="UTF-8" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>

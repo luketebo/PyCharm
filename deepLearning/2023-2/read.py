@@ -1,4 +1,4 @@
-def gettext():
+def Gettext():
     with open("hamlet.txt", "r") as f:
         txt = f.read()
     txt = txt.lower()
@@ -7,7 +7,7 @@ def gettext():
     return txt
 
 
-hamletTxt = gettext()
+hamletTxt = Gettext()
 words = hamletTxt.split()
 print(words)
 counts = {}
